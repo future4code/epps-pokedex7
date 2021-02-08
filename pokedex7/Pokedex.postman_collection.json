@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "d0539823-e225-43b2-b691-d09f7b4ea5f7",
+		"name": "Pokedex",
+		"description": "Pokedex grupo7",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pokemons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get PokemonDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
