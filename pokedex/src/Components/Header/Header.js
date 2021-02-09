@@ -5,16 +5,25 @@ import {
   goToPokedex,
   goToPokemonDetails,
 } from "../../Router/Coordinator";
+import styled from 'styled-components'
+
+
+const DivMain = styled.div`
+  width: 100%;
+  margin: auto;
+  text-align: center;
+`
 
 const Header = () => {
   const history = useHistory()
 
   return (
-      <div>
-          <button onClick={() =>goToHomePage(history)}>Home</button>
-          <button onClick={() =>goToPokedex(history)}>Pokedex</button>
-          <button onClick={() =>goToPokemonDetails(history)}>Details</button>
-      </div>
+      <DivMain>
+          <a class="nes-btn" href="#" onClick={() =>goToHomePage(history)}>Home</a>
+          <a class="nes-btn" href="#" onClick={() =>goToPokemonDetails(history)}>Details</a>
+          <a class="nes-btn" href="#" onClick={() =>goToPokedex(history)}>Pokedex</a>
+          <hr/>
+      </DivMain>
   )
 };
 
