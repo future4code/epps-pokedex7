@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Home from "../Components/Home/Home";
-import Pokedex from "../Components/Pokedex/Pokedex";
-import DetailsPage from "../Components/DetailsPage/DetailsPage";
-import Header from '../Components/Header/Header'
+import Pokedex from "../Components/Pages/Pokedex/Pokedex";
+import DetailsPage from "../Components/Pages/DetailsPage/DetailsPage";
+import Header from '../Components/Header/Header';
+import Home from '../Components/Pages/Home/Home'
+import CardPokes from "../Components/Pages/CardPokes/CardPokes";
 
 const Router = () => {
   return (
@@ -19,8 +20,8 @@ const Router = () => {
         <Route exact path="/details-page">
           <DetailsPage />
         </Route>
-        <Route path="/">
-          <p>Erro</p>
+        <Route exact path="/cardpoke">
+            <CardPokes/>
         </Route>
       </Switch>
     </BrowserRouter>
