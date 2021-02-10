@@ -1,36 +1,23 @@
-import axios from 'axios'
-import React, { useState, useEffect } from "react";
-import Appcss from '../../App.css';
+import React, { useContext, useEffect, useState } from 'react'
+import CardPokes from '../CardPokes/CardPokes';
+import Context from '../../Context/GlobalStateContext';
+import axios from 'axios';
 
-const HomePage = () => {
-    const [poke, setpoke] = useState([])
 
-    const getPoke = () =>{
-        axios.get("https://pokeapi.co/api/v2/pokemon")
-        .then((respondeu)=>{
-            setpoke(respondeu.data.results)
-            // console.log(respondeu.data.results)
-        }).catch((error)=>{
-            alert('nao pegou os pokemons')
-        })
-    }
+function Home() {
+  const pokemon = useContext(Context)
 
-    useEffect(()=>{
-        getPoke()
-    }, [])
-
-    return (
-        <div>
-            <p>Lista de todos os pokemons</p>
-            {poke.map((t)=>{
-          return(
-            <div class="nes-table-responsive">
-                <td>{t.name}</td>
+  return (
+    <div>
+        {pokemon && pokemon.map((p) => {
+          return (
+            <div>
+              <p>{p.name}</p>
             </div>
           )
-      })}
-        </div>
-    )
+        })}
+    </div>
+  )
 }
-export default HomePage
 
+export default Home
