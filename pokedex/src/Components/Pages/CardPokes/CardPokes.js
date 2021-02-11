@@ -5,12 +5,15 @@ import {goToDetailsPokemon} from "../../../Router/Coordinator";
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import GlobalStateContext from "../../Global/GlobalStateContext";
+import {Card, DivPokemon} from '../../Styled/Styled';
+import Pokedex from '../Pokedex/Pokedex';
 
 
 const CardPokes = (props) => {
     const [pokeImg, setpokeImg] = useState('')
     const [changePage, setchangePage] = useState(true);
     const { states, setters, requests } = useContext(GlobalStateContext);
+    // const [ligar, setligar] = useState(false)
 
   useEffect(() => {
     axios.get(`${props.url}`)
@@ -22,11 +25,22 @@ const CardPokes = (props) => {
       })
   }, [])
 
+  // const changeBotao = () =>{
+  //   setligar(!ligar)
+  // }
+
   return (
     <div>
-    <p>{props.name}</p>
-    <img src={pokeImg}/>
-    <button onClick={props.addPoke}> Adicionar</button>
+    <Card>
+      <DivPokemon>
+        <h3><strong>Nome: </strong>{props.name}</h3>
+      </DivPokemon>
+        <img src={pokeImg}/>
+        <divBotao>
+            <button type="button" class="nes-btn is-error" onClick={props.addPoke}>Me escolha</button>
+        </divBotao>
+        
+    </Card>
     </div>
   )
 }

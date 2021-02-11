@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
 *{
   margin: 0;
@@ -8,4 +8,5 @@
 body{
   font-family: 'Press Start 2P', cursive;
   border: 10px solid white;
+  font-family: 'Lato';
 }
