@@ -2,50 +2,45 @@ import React, { useContext } from "react"
 import {useRequestData} from "../../Hooks/useRequestData"
 import {useHistory} from "react-router-dom"
 import {goToDetailsPokemon} from "../../../Router/Coordinator";
-import {useEffect, useState} from 'react';
 import GlobalStateContext from "../../Global/GlobalStateContext";
-import {Card, DivPokemon} from '../../Styled/Styled';
-
+import {Card} from '../../Styled/Styled'
 
 const CardPokes = (props) => {
-    const [pokeImg, setpokeImg] = useState('')
-    const [changePage, setchangePage] = useState(true);
+    const history =  useHistory()
+    const addPoke = useRequestData(props.url, undefined)
     const { states, setters, requests } = useContext(GlobalStateContext);
-    const history = useHistory()
-    // const [pokemon, setPokemon] = useState([])
-    const pokemon = useRequestData(props.url, undefined)
 
-    // const [ligar, setligar] = useState(false)
 
-  // useEffect(() => {
-  //   axios.get(`${props.url}`)
-  //     .then((res) => {
-  //       setpokeImg(res.data.sprites.front_default)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }, [])
+    const removePoke = (name) =>{
+      console.log(states.pokedex)
+      let newPokedex = [...states.pokedex]
+      states.pokedex.map((poke,index)=>{
+        if(poke.name === name){
+          console.log(index)
+          newPokedex.splice(index, 1)
+          console.log('nova pokedex ', newPokedex )
+          setters.setPokedex(newPokedex)
+        }
+        alert('deletado com sucesso!')
+      })
+  }
 
-  // const changeBotao = () =>{
-  //   setligar(!ligar)
-  // }
 
-  return (
-    <div>
-    <Card>
-    {pokemon && 
+    return (
+        <Card>
+            {addPoke && 
             <div>
-                <img src={pokemon.sprites.front_default}/>
-                <p>{pokemon.name}</p> 
+                <img src={addPoke.sprites.front_default}/>
+                <p>{addPoke.name}</p> 
+            <div>
                 <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>
-                <button type="button" class="nes-btn is-error">Remover</button>
-                <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, pokemon.id)}>Mais sobre mim</button>
+                <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, addPoke.id)}>Mais sobre mim</button>
+                <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>
+            </div>
             </div>
             }
-    </Card>
-    </div>
-  )
+        </Card>
+    )
 }
 
-export default CardPokes
+export default CardPokes 

@@ -13,14 +13,15 @@ export const DivPokemon = styled.div`
 `
 
 export const Card = styled.div` 
-  width: 500px;
+  margin:10px;
+  width: 400px;
+  /* height: 200px; */
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  flex-direction: row;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
@@ -32,6 +33,11 @@ export const Card = styled.div`
 
 export const divBotao = styled.div`
   width: 100%;
+`
+export const ContainerPokemons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 export const Imagem = styled.img`
