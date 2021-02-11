@@ -14,7 +14,8 @@ export const DivPokemon = styled.div`
 `
 
 export const Card = styled.div` 
-  width: 500px;
+  margin:10px;
+  width: 400px;
   height: 200px;
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
@@ -33,5 +34,10 @@ export const Card = styled.div`
 
 export const divBotao = styled.div`
   width: 100%;
+`
+export const ContainerPokemons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 

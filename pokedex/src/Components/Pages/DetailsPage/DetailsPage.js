@@ -1,7 +1,9 @@
+import React, {useEffect, useContext} from "react"
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { BASE_URL } from "../../Bases/urls";
 import { useRequestData } from "../../Hooks/useRequestData";
+import GlobalStateContext from "../../Global/GlobalStateContext";
 
 const DetailsContainer = styled.div``;
 
@@ -18,7 +20,12 @@ const InfosContainer = styled.div``;
 const DetailsPage = () => {
   const pathParams = useParams();
   const getDetails = useRequestData(`${BASE_URL}/${pathParams.id}`, undefined);
+  const { states, setters, requests } = useContext(GlobalStateContext);
 
+
+  useEffect(()=>{
+    setters.setPokedexPage(false)
+})
 
 
   return (
@@ -72,3 +79,4 @@ const DetailsPage = () => {
 };
 
 export default DetailsPage;
+
