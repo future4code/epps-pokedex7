@@ -3,27 +3,29 @@ import {useRequestData} from "../../Hooks/useRequestData"
 import {useHistory} from "react-router-dom"
 import {goToDetailsPokemon} from "../../../Router/Coordinator";
 import {useEffect, useState} from 'react';
-import axios from 'axios';
 import GlobalStateContext from "../../Global/GlobalStateContext";
 import {Card, DivPokemon} from '../../Styled/Styled';
-import Pokedex from '../Pokedex/Pokedex';
 
 
 const CardPokes = (props) => {
     const [pokeImg, setpokeImg] = useState('')
     const [changePage, setchangePage] = useState(true);
     const { states, setters, requests } = useContext(GlobalStateContext);
+    const history = useHistory()
+    // const [pokemon, setPokemon] = useState([])
+    const pokemon = useRequestData(props.url, undefined)
+
     // const [ligar, setligar] = useState(false)
 
-  useEffect(() => {
-    axios.get(`${props.url}`)
-      .then((res) => {
-        setpokeImg(res.data.sprites.front_default)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios.get(`${props.url}`)
+  //     .then((res) => {
+  //       setpokeImg(res.data.sprites.front_default)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }, [])
 
   // const changeBotao = () =>{
   //   setligar(!ligar)
@@ -32,14 +34,15 @@ const CardPokes = (props) => {
   return (
     <div>
     <Card>
-      <DivPokemon>
-        <h3><strong>Nome: </strong>{props.name}</h3>
-      </DivPokemon>
-        <img src={pokeImg}/>
-        <divBotao>
-            <button type="button" class="nes-btn is-error" onClick={props.addPoke}>Me escolha</button>
-        </divBotao>
-        
+    {pokemon && 
+            <div>
+                <img src={pokemon.sprites.front_default}/>
+                <p>{pokemon.name}</p> 
+                <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>
+                <button type="button" class="nes-btn is-error">Remover</button>
+                <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, pokemon.id)}>Mais sobre mim</button>
+            </div>
+            }
     </Card>
     </div>
   )

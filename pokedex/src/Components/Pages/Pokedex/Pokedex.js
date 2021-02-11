@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import GlobalStateContext from "../../Global/GlobalStateContext"
 import CardPokes from '../CardPokes/CardPokes';
-import {DivPokemon} from '../../Styled/Styled'
+import {DivPokemon, Imagem} from '../../Styled/Styled';
+import imgHeader from '../../../imagens/img1.jpg';
 
 const Pokedex = () => {
 
@@ -20,14 +21,12 @@ const pokeList = states.pokedex && states.pokedex.map((item)=>{
 
     return (
         <div>
+            {/* <Imagem src={imgHeader}/> */}
             <DivPokemon>
                 <h1>Sua lista de pokemons</h1>
-                <div class="nes-container with-title is-centered">
-                    <p class="title"></p>
-                    <p>Olá, segue seus pokemons escolhidos..</p>
-                </div>
             </DivPokemon>
-            {pokeList}
+            {pokeList}            
+
         </div>
     )
 }
