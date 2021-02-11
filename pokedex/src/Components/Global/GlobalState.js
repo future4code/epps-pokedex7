@@ -7,13 +7,9 @@ const GlobalState = (props) => {
   const [pokemon, setPokemon] = useState([])
   const [pokedex, setPokedex] = useState([])
   
-  useEffect(() => {
-    requests.getPokemons()
-  }, [])
-
+ 
    const getPokemons = () => {
-    axios
-      .get(`${BASE_URL}/?limit=20`)
+    axios.get(`${BASE_URL}`)
       .then((response) => {
         setPokemon(response.data.results)
       })
