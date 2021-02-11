@@ -6,7 +6,7 @@ import {
   goToPokemonDetails,
 } from "../../Router/Coordinator";
 import styled from 'styled-components'
-
+import "nes.css/css/nes.min.css";
 
 const DivMain = styled.div`
   width: 100%;
@@ -19,9 +19,9 @@ const Header = () => {
 
   return (
       <DivMain>
-          <a class="nes-btn" href="#" onClick={() =>goToHomePage(history)}>Home</a>
-          <a class="nes-btn" href="#" onClick={() =>goToPokemonDetails(history)}>Details</a>
-          <a class="nes-btn" href="#" onClick={() =>goToPokedex(history)}>Pokedex</a>
+        <button type="button" class="nes-btn is-success" onClick={() =>goToHomePage(history)}>Home</button>
+          <button type="button" class="nes-btn is-warning" onClick={() =>goToPokedex(history)}>Pokedex</button>
+          <button type="button" class="nes-btn is-primary" onClick={() =>goToPokemonDetails(history)}>Detalhes</button>
           <hr/>
       </DivMain>
   )
