@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import axios from "axios";
-import createContext from "../Context/createContext";
+// import React, { useState, useEffect } from 'react';
+// import GlobalContext from '../global/GlobalContext';
+// import axios from 'axios';
+// import { BASE_URL } from '../../constants/constants';
+// // import useRequestData from '../../Hooks/useRequestData';
 
-const GlobalState = (props) => {
-  const [pokemon, setpokemon] = useState([]);
-  
-  // const data = useContext(GlobalStateContext)
-    const getPokemon = (() => {
-        axios.get("https://pokeapi.co/api/v2/pokemon/")
-        .then((res) => {
-          setpokemon(res.data.results)
-          console.log(setpokemon)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-  }, [])
+// function GlobalState(props) {
+//     const pokemonList = useRequestData({}, BASE_URL)
+//     const [listTotalPokemon, setLisTotalPokemon] = useState([])
+//     const [listPokemon, setListPokemon] = useState([])
+//     const [pokedex, setPokedex] = useState([])
 
-  const states = {pokemon}
-  const setters = {setpokemon}
-  const requests = {getPokemon}
-  const data = {states, setters, requests}
-  
+//     const getPokemons = () => {
+//         const newListPokemon = []
+//         pokemonList.results && pokemonList.results.map((item) => {
+//             axios.get(item.url).then((response) => {
+//                 newListPokemon.push(response.data)
+//                 if (newListPokemon.length === 20) {
+//                     setListPokemon(newListPokemon)
+//                     setLisTotalPokemon(newListPokemon)
+//                 }
+//             }).catch(error => { alert(error) })
+//         })
+//     }
+//     useEffect(() => {
+//         getPokemons()
+//     }, [pokemonList.results]);
 
-  return (
-    <createContext.Provider value={data}>
-      {props.children}
-    </createContext.Provider>
-  );
-};
+//     const data = { listPokemon, setListPokemon, pokemonList, getPokemons, pokedex, setPokedex, listTotalPokemon }
+//     return (
+//         <GlobalContext.Provider value={ data }>
+//             { props.children }
+//         </GlobalContext.Provider>
+//     )
+// }
 
-export default GlobalState;
+// export default GlobalState;

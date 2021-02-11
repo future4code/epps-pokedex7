@@ -1,27 +1,29 @@
-// import axios from 'axios';
-// import React, { useContext, useEffect, useState } from 'react'
-// import { PokeCard } from '../../Styled/Styled';
-// import Context from '../../Context/createContext';
-// import {BASE_URL} from '../../Bases/urls'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-// function CardPokes(props) {
-//   const [pokeImg, setpokeImg] = useState('')
 
-//   useEffect(()=>{
-//     axios.get(`${BASE_URL}`)
-//     .then((res)=>{
-//       setpokeImg(res.data.sprits.front_Default)
-//       console.log(setpokeImg)
-//     }).catch((err)=>{
-//       console.log(err)
-//     })
-//   })
+export function CardPokes(props) {
+  const [pokemonImage, setPokemonImage] = useState();
+
+  const getPokemonImage = () => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${props.name}`)
+      .then((resposta) => {
+        setPokemonImage(resposta.data.sprites.front_default);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+  useEffect(() => {
+    getPokemonImage();
+  }, []);
   
-//   return (
-//     <PokeCard>
-//       <img src={pokeImg}></img>
-//     </PokeCard>
-//   )
-// }
-
-// export default CardPokes
+  return (
+    <div>
+      <img src={pokemonImage} />
+      <h3>{props.name}</h3>
+    </div>
+  );
+}
+export default CardPokes;
