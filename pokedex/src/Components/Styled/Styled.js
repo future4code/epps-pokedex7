@@ -8,8 +8,30 @@ export const Cardpoke = styled.div`
 `
 
 export const DivPokemon = styled.div`
-    background-color: yellow;
-    border: 1px solid black;
-    width: 200px;
-    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
 `
+
+export const Card = styled.div` 
+  width: 500px;
+  height: 200px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+  color: black;
+`
+
+export const divBotao = styled.div`
+  width: 100%;
+`
+

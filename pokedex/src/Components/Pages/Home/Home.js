@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import CardPokes from "../CardPokes/CardPokes";
 import styled from "styled-components";
 import GlobalStateContext from "../../Global/GlobalStateContext";
+import {DivPokemon} from '../../Styled/Styled'
 
 const HomeContainer = styled.div``;
 
@@ -40,6 +41,12 @@ const HomePage = () => {
 
   return (
     <HomeContainer>
+      <DivPokemon>
+        <h1>Lista de todos pokemons</h1>
+      </DivPokemon>
+      <div class="nes-container is-rounded">
+        <p>Olá, segue a lista de pokemons disponiveis para escolha.</p>
+      </div>
       {Pokelist}
     </HomeContainer>
   )
