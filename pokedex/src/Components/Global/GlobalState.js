@@ -6,7 +6,7 @@ import GlobalStateContext from "./GlobalStateContext"
 const GlobalState = (props) => {
   const [pokemon, setPokemon] = useState([])
   const [pokedex, setPokedex] = useState([])
-  
+  const [pokedexPage, setPokedexPage] = useState(false)
  
    const getPokemons = () => {
     axios.get(`${BASE_URL}`)
@@ -18,8 +18,8 @@ const GlobalState = (props) => {
       })
     }
 
-  const states = {pokemon, pokedex}
-  const setters = {setPokemon, setPokedex}
+  const states = {pokemon, pokedex, pokedexPage}
+  const setters = {setPokemon, setPokedex, setPokedexPage}
   const requests = {getPokemons}
 
   const data = { states, setters, requests }

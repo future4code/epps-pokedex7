@@ -22,11 +22,20 @@ const CardPokes = (props) => {
       })
   }, [])
 
+  const removePoke = (name) =>{
+    console.log(states.pokedex)
+    states.pokedex.map(poke=>{
+      if(poke.name === name){
+        console.log(poke)
+      }
+    })
+  }
+
   return (
     <div>
     <p>{props.name}</p>
     <img src={pokeImg}/>
-    <button onClick={props.addPoke}> Adicionar</button>
+    {!states.pokedexPage ? <button onClick={props.addPoke}> Adicionar</button> : <button onClick={()=>removePoke(props.name)}> Deletar</button>}
     </div>
   )
 }

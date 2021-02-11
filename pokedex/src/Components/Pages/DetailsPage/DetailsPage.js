@@ -1,7 +1,14 @@
-import React from "react"
+import React, {useEffect, useContext} from "react"
 import Header from "../../Header/Header"
+import GlobalStateContext from "../../Global/GlobalStateContext";
+
 
 const DetailsPage = () => {
+    const { states, setters, requests } = useContext(GlobalStateContext);
+
+    useEffect(()=>{
+        setters.setPokedexPage(false)
+    })
     return (
         <div>
             <p>Details</p>

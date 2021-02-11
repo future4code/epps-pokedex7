@@ -9,7 +9,8 @@ const HomePage = () => {
   const { states, setters, requests } = useContext(GlobalStateContext);
 
   useEffect(()=>{
-    requests.getPokemons()
+      requests.getPokemons()
+      setters.setPokedexPage(false)
   }, [])
 
   const addPoke = (newItem) => {
@@ -26,11 +27,14 @@ const HomePage = () => {
     setters.setPokedex(newList)
   }
 
+ 
+
   console.log(states.pokedex)
 
   const Pokelist = states.pokemon && states.pokemon.map((item) => {
     return (
         <CardPokes
+          id={item.id}
           name={item.name}
           url={item.url} //card poke da imagem?
           addPoke={() => addPoke(item)}
