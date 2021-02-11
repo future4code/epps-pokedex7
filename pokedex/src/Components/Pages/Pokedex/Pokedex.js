@@ -1,46 +1,27 @@
-import React from "react";
-import "nes.css/css/nes.min.css";
-import {Card, ContainerPokedex, Tittle, Img, BtnDiv, I} from './PokedexStyled'
+import React, { useContext } from "react";
+import GlobalStateContext from "../../Global/GlobalStateContext"
+import CardPokes from '../CardPokes/CardPokes'
 
-const PokedexPage = () => {
+const Pokedex = () => {
 
-    let poke = ([{ name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/" },
-    { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon/2/" },
-    { name: "venusaur", url: "https://pokeapi.co/api/v2/pokemon/3/" },
-    { name: "charmander", url: "https://pokeapi.co/api/v2/pokemon/4/" }])
+const { states, setters, requests } = useContext(GlobalStateContext);
+
+
+const pokeList = states.pokedex && states.pokedex.map((item)=>{
     
-    const pokemonDelete = () =>{
-        console.log('deletar da lista')
-    }
-
-    const pokemonDetails = () =>{
-        console.log('Ir para detalhes')
-    }
+    return(
+        <CardPokes
+            name={item.name}
+            url={item.url}
+        />
+    )
+})
 
     return (
         <div>
-            <Tittle className="nes-text is-primary">
-            Pokedex </Tittle>
-            <ContainerPokedex className="nes-container is-centered">
-            {poke.map(pokemon => {
-                return (
-                    <Card key={pokemon.name} className="nes-container is-centered">
-                        {(<Img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} />) ? 
-                        <Img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"} /> :
-                    <p>Carregando imagem</p> }
-                        <div className="nes-text is-primary">
-                            Name: {pokemon.name}
-                        </div>
-                        <BtnDiv>
-                            <button onClick={pokemonDetails} type="button" className="nes-btn is-primary">Detalhes</button>
-                            <button onClick={pokemonDelete} type="button" className="nes-btn is-warning">Warning</button>
-                        </BtnDiv>
-                    </Card>
-                )
-            })}
-            </ContainerPokedex>
+            {pokeList}
         </div>
     )
 }
 
-export default PokedexPage
+export default Pokedex
