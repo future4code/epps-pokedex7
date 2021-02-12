@@ -46,6 +46,7 @@ const CardPokes = (props) => {
                   {states.pokedexPage && <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>}
                 </div>
             </DivTeste>
+
             }
         </Card>
     )
