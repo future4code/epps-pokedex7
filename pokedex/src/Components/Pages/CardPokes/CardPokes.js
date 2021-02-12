@@ -1,15 +1,21 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import {useRequestData} from "../../Hooks/useRequestData"
 import {useHistory} from "react-router-dom"
 import {goToDetailsPokemon} from "../../../Router/Coordinator";
 import GlobalStateContext from "../../Global/GlobalStateContext";
-import {Card} from '../../Styled/Styled'
+import {Card} from '../../Styled/Styled';
+import styled from 'styled-components';
+
+
+const DivTeste = styled.div`
+    font-size: 10px;
+    padding: 50px;
+`
 
 const CardPokes = (props) => {
     const history =  useHistory()
     const addPoke = useRequestData(props.url, undefined)
     const { states, setters, requests } = useContext(GlobalStateContext);
-
 
     const removePoke = (name) =>{
       console.log(states.pokedex)
@@ -21,24 +27,25 @@ const CardPokes = (props) => {
           console.log('nova pokedex ', newPokedex )
           setters.setPokedex(newPokedex)
         }
-        alert('deletado com sucesso!')
       })
+      alert('deletado com sucesso!')
   }
 
 
     return (
         <Card>
             {addPoke && 
-            <div>
+            <DivTeste>
                 <img src={addPoke.sprites.front_default}/>
-                <p>{addPoke.name}</p> 
-            <div>
-                <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>
-                <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, addPoke.id)}>Mais sobre mim</button>
-                {/* <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button> */}
-                {states.pokedexPage && <button type="button" class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>}
-            </div>
-            </div>
+                  <h3 style={{color: 'white'}}>PERFIL</h3>
+                  <p class="nes-balloon from-left nes-pointer" style={{color: 'black'}}>Olá meu nome é {addPoke.name.toUpperCase()}</p>
+      
+                <div>
+                  {!states.pokedexPage && <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>}<br/><br/>
+                  <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, addPoke.id)}>Mais sobre mim</button>
+                  {states.pokedexPage && <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>}
+                </div>
+            </DivTeste>
             }
         </Card>
     )

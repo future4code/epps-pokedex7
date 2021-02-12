@@ -3,7 +3,8 @@ import {useHistory} from 'react-router-dom';
 import {goToHomePage, goToPokedex, goToPokemonDetails} from "../../Router/Coordinator";
 import styled from 'styled-components'
 import "nes.css/css/nes.min.css";
-import imageHeader from '../../../src/imagens/img2.jpg'
+// import imageHeader from '../../../src/imagens/img2.jpg';
+import HeaderTest from '../../imagens/img4.gif'
 
 const DivMain = styled.div`
   padding: 0px;
@@ -26,7 +27,7 @@ const Header = () => {
 
   return (
       <DivMain>
-        <Imagem src={imageHeader}/>
+        <Imagem src={HeaderTest}/>
         <button type="button" class="nes-btn is-success" onClick={() =>goToHomePage(history)}>Home</button>
           <button type="button" class="nes-btn is-warning" onClick={() =>goToPokedex(history)}>Pokedex</button>
       </DivMain>

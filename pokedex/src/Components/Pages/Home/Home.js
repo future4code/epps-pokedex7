@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import CardPokes from "../CardPokes/CardPokes";
 import styled from "styled-components";
 import GlobalStateContext from "../../Global/GlobalStateContext";
-import {ContainerPokemons} from '../../Styled/Styled'
+import { CenterP, ContainerPokemons } from '../../Styled/Styled'
 
 const HomeContainer = styled.div``;
 
@@ -13,12 +13,13 @@ const DivPokemon = styled.div`
     font-family: 'Press Start 2P', cursive;
 `
 
+
 const HomePage = () => {
   const { states, setters, requests } = useContext(GlobalStateContext);
 
-  useEffect(()=>{
-      requests.getPokemons()
-      setters.setPokedexPage(false)
+  useEffect(() => {
+    requests.getPokemons()
+    setters.setPokedexPage(false)
   }, [])
 
   const addPoke = (newItem) => {
@@ -35,34 +36,37 @@ const HomePage = () => {
     setters.setPokedex(newList)
   }
 
- 
+
   console.log(states.pokedex)
 
   const Pokelist = states.pokemon && states.pokemon.map((item) => {
     return (
-        <CardPokes
-          id={item.id}
-          name={item.name}
-          url={item.url} //card poke da imagem?
-          addPoke={() => addPoke(item)}
-        />
+      <CardPokes
+        id={item.id}
+        name={item.name}
+        url={item.url} //card poke da imagem?
+        addPoke={() => addPoke(item)}
+      />
     )
   })
 
   return (
     <HomeContainer>
       <DivPokemon>
-        <h1>Lista de todos pokemons</h1>
         <span class="nes-text is-primary">Lista </span>
         <span class="nes-text is-success">de </span>
         <span class="nes-text is-warning">Todos </span>
         <span class="nes-text is-error">Pokemons</span>
       </DivPokemon>
-      <div class="nes-container is-rounded">
-        <p>Olá, segue a lista de pokemons disponiveis para escolha.</p>
+      <div>
+        <CenterP>
+          <div class="nes-container with-title is-centered">
+            <p style={{color: 'white'}}>Olá, segue a lista de pokemons disponiveis para escolha.</p>
+        </div>
+        </CenterP>
       </div>
       <ContainerPokemons>
-      {Pokelist}
+        {Pokelist}
       </ContainerPokemons>
     </HomeContainer>
   )
