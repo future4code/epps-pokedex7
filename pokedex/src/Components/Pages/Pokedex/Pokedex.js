@@ -5,6 +5,8 @@ import CardPokes from '../CardPokes/CardPokes';
 import {DivPokemon, Imagem} from '../../Styled/Styled';
 import imgHeader from '../../../imagens/img1.jpg';
 
+
+
 const Pokedex = () => {
 
     const { states, setters, requests } = useContext(GlobalStateContext);
@@ -28,7 +30,10 @@ const Pokedex = () => {
         <div>
             {/* <Imagem src={imgHeader}/> */}
             <DivPokemon>
-                <h1>Sua lista de pokemons</h1>
+                <span class="nes-text is-primary">Sua </span>
+                <span class="nes-text is-success">Lista </span>
+                <span class="nes-text is-warning">das </span>
+                <span class="nes-text is-error">Pokedex</span>
             </DivPokemon>
             {pokeList}            
 
