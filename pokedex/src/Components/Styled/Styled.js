@@ -38,6 +38,7 @@ export const ContainerPokemons = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom:40px;
 `
 
 export const Imagem = styled.img`
@@ -51,4 +52,7 @@ export const Imagem = styled.img`
 export const CenterP =  styled.div`
   text-align:center;
   font-size:1.2rem;
+`
+export const PokedexConteiner = styled.div`
+
 `
