@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import {useRequestData} from "../../Hooks/useRequestData"
 import {useHistory} from "react-router-dom"
 import {goToDetailsPokemon} from "../../../Router/Coordinator";
@@ -21,8 +21,8 @@ const CardPokes = (props) => {
           console.log('nova pokedex ', newPokedex )
           setters.setPokedex(newPokedex)
         }
-        alert('deletado com sucesso!')
       })
+      alert('deletado com sucesso!')
   }
 
 
