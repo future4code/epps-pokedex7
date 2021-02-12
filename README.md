@@ -5,12 +5,6 @@ Nome dos integrantes:
 - Daniel Ratti 
 - Fernando Silva
 
-Link do Surge: www.link.com.br
+Link do Surge: halting-mine.surge.sh
 
-O que funciona:
-- Item 1
-- Item 2
 
-O que não funciona: 
-- Item 3
-- Item 4
