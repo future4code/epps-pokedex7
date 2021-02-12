@@ -48,3 +48,7 @@ export const Imagem = styled.img`
     padding: 0px;
 `
 
+export const CenterP =  styled.div`
+  text-align:center;
+  font-size:1.2rem;
+`

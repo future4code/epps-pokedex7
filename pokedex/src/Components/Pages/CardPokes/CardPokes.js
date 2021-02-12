@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import {useRequestData} from "../../Hooks/useRequestData"
 import {useHistory} from "react-router-dom"
 import {goToDetailsPokemon} from "../../../Router/Coordinator";
@@ -21,8 +21,8 @@ const CardPokes = (props) => {
           console.log('nova pokedex ', newPokedex )
           setters.setPokedex(newPokedex)
         }
-        alert('deletado com sucesso!')
       })
+      alert('deletado com sucesso!')
   }
 
 
@@ -33,9 +33,9 @@ const CardPokes = (props) => {
                 <img src={addPoke.sprites.front_default}/>
                 <p>{addPoke.name}</p> 
             <div>
-                <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>
+                {!states.pokedexPage && <button type="button" class="nes-btn is-success" onClick={props.addPoke}>Me escolha</button>}
                 <button type="button" class="nes-btn is-primary" onClick={() => goToDetailsPokemon(history, addPoke.id)}>Mais sobre mim</button>
-                <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>
+                {states.pokedexPage && <button class="nes-btn is-error" onClick={() => removePoke(props.name)}>Deletar</button>}
             </div>
             </div>
             }
