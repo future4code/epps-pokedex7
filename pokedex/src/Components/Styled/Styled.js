@@ -13,7 +13,7 @@ export const DivPokemon = styled.div`
 `
 
 export const Card = styled.div` 
-  margin:10px;
+  /* margin: 10px; */
   width: 400px;
   /* height: 200px; */
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
@@ -28,7 +28,10 @@ export const Card = styled.div`
   margin: auto;
   text-align: center;
   margin-top: 100px;
-  color: black;
+  color: white;
+  margin-left: 30px;
+  background-color: #1C1C21;
+  border: 1px solid black;
 `
 
 export const divBotao = styled.div`

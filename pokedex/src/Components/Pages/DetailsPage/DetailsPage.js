@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { BASE_URL } from "../../Bases/urls";
 import { useRequestData } from "../../Hooks/useRequestData";
 import {Card} from '../../Styled/Styled';
+import {goToPokedex} from '../../../Router/Coordinator';
 
 const QuebraLinha = styled.div`
   width: 100%;
@@ -11,7 +12,7 @@ const QuebraLinha = styled.div`
 const DetailsPage = () => {
   const pathParams = useParams();
   const getDetails = useRequestData(`${BASE_URL}/${pathParams.id}`, undefined);
-
+  const history = useHistory()
 
   return (
     <Card>
@@ -38,7 +39,6 @@ const DetailsPage = () => {
 
       </QuebraLinha> 
 
-
         <QuebraLinha>
             <h3>Estatísticas</h3>
             {getDetails &&
@@ -52,7 +52,6 @@ const DetailsPage = () => {
 
       </QuebraLinha>
 
-
       <QuebraLinha>
             <h3>Meus 5 movimentos são</h3>
             {getDetails &&
@@ -60,10 +59,9 @@ const DetailsPage = () => {
                 return num < 5 && <p>{move.move.name}</p>;
               })}
       </QuebraLinha>
-
-
+      <button type="button" class="nes-btn is-warning" onClick={()=>goToPokedex(history)}>Voltar</button>
     </Card>
-  );
-};
+  )
+}
 
 export default DetailsPage;

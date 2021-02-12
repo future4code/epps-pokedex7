@@ -13,6 +13,7 @@ const DivPokemon = styled.div`
     font-family: 'Press Start 2P', cursive;
 `
 
+
 const HomePage = () => {
   const { states, setters, requests } = useContext(GlobalStateContext);
 
@@ -52,11 +53,16 @@ const HomePage = () => {
   return (
     <HomeContainer>
       <DivPokemon>
-        <h1>Lista de todos pokemons</h1>
+        <span class="nes-text is-primary">Lista </span>
+        <span class="nes-text is-success">de </span>
+        <span class="nes-text is-warning">Todos </span>
+        <span class="nes-text is-error">Pokemons</span>
       </DivPokemon>
-      <div class="nes-container is-rounded">
+      <div>
         <CenterP>
-          <p class="nes-text is-primary">Olá, segue a lista de pokemons disponiveis para escolha.</p>
+          <div class="nes-container with-title is-centered">
+            <p style={{color: 'white'}}>Olá, segue a lista de pokemons disponiveis para escolha.</p>
+        </div>
         </CenterP>
       </div>
       <ContainerPokemons>
